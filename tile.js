@@ -4,8 +4,6 @@ function Tile() {
 	
 	this.fbIndex = null;
 	this.tIndex = null;
-	this.x = null;
-	this.y = null;
 	this.w = null;
 	this.h = null;
 	this.incX = null;
@@ -18,18 +16,18 @@ function Tile() {
 }
 	
 Tile.prototype.setBuffer = function(scanline){
-	for(this.y=0;this.y<8;this.y++){
-		this.setScanline(this.y,scanline[this.y],scanline[this.y+8]);
+	for (var y=0;y<8;y++) {
+		this.setScanline(y, scanline[y], scanline[y+8]);
 	}
 }
 	
 Tile.prototype.setScanline = function(sline, b1, b2){
 	this.initialized = true;
-	this.tIndex = sline<<3;
-	for(this.x=0;this.x<8;this.x++){
-		this.pix[this.tIndex+this.x] = ((b1>>(7-this.x))&1) 
-		        + (((b2>>(7-this.x))&1)<<1);
-		if(this.pix[this.tIndex+this.x]==0) this.opaque[sline]=false;
+	var x = 0, tIndex = this.tIndex = sline<<3;
+	for( ;x<8;x++){
+		this.pix[tIndex+x] = ((b1>>(7-x))&1) 
+		        + (((b2>>(7-x))&1)<<1);
+		if(this.pix[tIndex+x]==0) this.opaque[sline]=false;
 	}
 }
 	
@@ -56,14 +54,14 @@ Tile.prototype.render = function(srcx1, srcy1, srcx2, srcy2, dx, dy, palAdd, pal
 	if(dy+srcy2>=240){
 		srcy2=240-dy;
 	}
-	
+	var y = 0, x = 0;
 	if(!flipHorizontal && !flipVertical){
 		
 		this.fbIndex = (dy<<8)+dx;
 		this.tIndex = 0;
-		for(this.y=0;this.y<8;this.y++){
-			for(this.x=0;this.x<8;this.x++){
-				if(this.x>=srcx1 && this.x<srcx2 && this.y>=srcy1 && this.y<srcy2){
+		for( ;y<8;y++){
+			for( ;x<8;x++){
+				if(x>=srcx1 && x<srcx2 && y>=srcy1 && y<srcy2){
 					this.palIndex = this.pix[this.tIndex];
 					this.tpri = priTable[this.fbIndex];
 					if(this.palIndex!=0 && pri<=(this.tpri&0xFF)){
@@ -84,9 +82,9 @@ Tile.prototype.render = function(srcx1, srcy1, srcx2, srcy2, dx, dy, palAdd, pal
 		
 		this.fbIndex = (dy<<8)+dx;
 		this.tIndex = 7;
-		for(this.y=0;this.y<8;this.y++){
-			for(this.x=0;this.x<8;this.x++){
-				if(this.x>=srcx1 && this.x<srcx2 && this.y>=srcy1 && this.y<srcy2){
+		for( ;y<8;y++){
+			for( ;x<8;x++){
+				if(x>=srcx1 && x<srcx2 && y>=srcy1 && y<srcy2){
 					this.palIndex = this.pix[this.tIndex];
 					this.tpri = priTable[this.fbIndex];
 					if(this.palIndex!=0 && pri<=(this.tpri&0xFF)){
@@ -107,9 +105,9 @@ Tile.prototype.render = function(srcx1, srcy1, srcx2, srcy2, dx, dy, palAdd, pal
 		
 		this.fbIndex = (dy<<8)+dx;
 		this.tIndex = 56;
-		for(this.y=0;this.y<8;this.y++){
-			for(this.x=0;this.x<8;this.x++){
-				if(this.x>=srcx1 && this.x<srcx2 && this.y>=srcy1 && this.y<srcy2){
+		for( ;y<8;y++){
+			for( ;x<8;x++){
+				if(x>=srcx1 && x<srcx2 && y>=srcy1 && y<srcy2){
 					this.palIndex = this.pix[this.tIndex];
 					this.tpri = priTable[this.fbIndex];
 					if(this.palIndex!=0 && pri<=(this.tpri&0xFF)){
@@ -130,9 +128,9 @@ Tile.prototype.render = function(srcx1, srcy1, srcx2, srcy2, dx, dy, palAdd, pal
 		
 		this.fbIndex = (dy<<8)+dx;
 		this.tIndex = 63;
-		for(this.y=0;this.y<8;this.y++){
-			for(this.x=0;this.x<8;this.x++){
-				if(this.x>=srcx1 && this.x<srcx2 && this.y>=srcy1 && this.y<srcy2){
+		for( ;y<8;y++){
+			for( ;x<8;x++){
+				if(x>=srcx1 && x<srcx2 && y>=srcy1 && y<srcy2){
 					this.palIndex = this.pix[this.tIndex];
 					this.tpri = priTable[this.fbIndex];
 					if(this.palIndex!=0 && pri<=(this.tpri&0xFF)){

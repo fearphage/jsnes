@@ -25,13 +25,12 @@ charset="utf-8">
     <script src="roms.js" type="text/javascript" charset="utf-8"></script>
     <script src="tile.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
-        var nes;
-        var roms = {};
+        var nes, roms = {};
         
         $(document).ready(function() {
             $("#status").text("Initialising...");
             $("<option>Select a ROM...</option>").appendTo("#roms");
-            for (c in roms_list) {
+            for (var c in roms_list) {
                 var optgroup = $('<optgroup></optgroup>').attr("label", c);
                 for (i in roms_list[c]) if (roms_list[c].hasOwnProperty(i)) {
                     $('<option>'+roms_list[c][i]+'</option>')

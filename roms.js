@@ -1,5 +1,5 @@
 var roms_list = {
-    "Working": new Array(
+    "Working": [
         'Bubble Bobble (U).nes',
         'Contra (U) [!].nes',
         'Donkey Kong (JU).nes',
@@ -16,18 +16,18 @@ var roms_list = {
         'Tetris (U) [!].nes',
         'Tetris 2 (U) [!].nes',
         'Zelda II - The Adventure of Link (U).nes'
-    ),
+    ],
     
-    "Nearly Working": new Array(
+    "Nearly Working": [
         'Super Mario Bros. 3 (U) (PRG1) [!].nes'
-    )
+    ]
     
     /*
-    "Broken": new Array(
+    "Broken": [
         'Mega Man 2 (U).nes',
         'Metroid (U) [!].nes'
-    )
-    "Untested": new Array(
+    ]
+    "Untested": [
         '10-Yard Fight (U).nes',
         '1942 (JU) [!].nes',
         '1943 - The Battle of Midway (U).nes',
@@ -773,5 +773,5 @@ var roms_list = {
         'Zanac (U).nes',
         'Zen Intergalactic Ninja (U).nes',
         'Zombie Nation (U).nes'
-    )*/
-}
+    ]*/
+};

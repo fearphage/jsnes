@@ -17,14 +17,8 @@ NameTable.prototype.getAttrib = function(x, y){
 }
 
 NameTable.prototype.writeAttrib = function(index, value){
-	var basex,basey;
-	var add;
-	var tx,ty;
-	var attindex;
-	basex = index%8;
-	basey = parseInt(index/8);
-	basex *= 4;
-	basey *= 4;
+	var basex = (index%8) *4, basey = parseInt(index/8) *4
+      ,add,tx,ty,attindex;
 	
 	for(var sqy=0;sqy<2;sqy++){
 		for(var sqx=0;sqx<2;sqx++){
